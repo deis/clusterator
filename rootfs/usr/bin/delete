@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source init
+
+successes=0
+while read name; do
+  gcloud container clusters list --project=${GCLOUD_PROJECT_ID} 2> /dev/null | grep -q ${name}
+  if [ $? -eq 0 ]; then
+    echo "Deleting cluster with name:${name}"
+    gcloud container clusters delete ${name} --quiet --async &> /dev/null
+  fi
+done <names
