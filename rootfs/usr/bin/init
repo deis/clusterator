@@ -1,0 +1,4 @@
+echo ${GCLOUD_CREDENTIALS} > "${GCLOUD_CREDENTIALS_FILE}"
+gcloud -q auth activate-service-account --key-file "${GCLOUD_CREDENTIALS_FILE}"
+gcloud -q config set project "${GCLOUD_PROJECT_ID}"
+gcloud -q config set compute/zone "${ZONE}"

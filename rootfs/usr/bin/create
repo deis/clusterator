@@ -1,0 +1,24 @@
+#!/bin/bash
+
+source init
+
+successes=0
+while read name; do
+  if [ ${successes} -lt $NUMBER_OF_CLUSTERS ]; then
+    gcloud container clusters list --project=${GCLOUD_PROJECT_ID} 2> /dev/null | grep -q ${name}
+    if [ $? -gt 0 ]; then
+      echo "Creating cluster with name:${name}"
+      gcloud container clusters create "${name}" \
+        --machine-type $MACHINE_TYPE \
+        --num-nodes $NUM_NODES \
+        --no-async &> /dev/null
+
+      echo "Upgrading Cluster to version:${VERSION}"
+      gcloud container clusters upgrade ${name} \
+        --cluster-version ${VERSION} \
+        --async \
+        --quiet &> /dev/null
+      (( successes += 1 ))
+    fi
+  fi
+done <names
