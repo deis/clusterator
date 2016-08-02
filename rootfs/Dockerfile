@@ -7,7 +7,7 @@ ENV NUMBER_OF_CLUSTERS=1
 ENV NUM_NODES="5"
 ENV MACHINE_TYPE="n1-standard-4"
 ENV ZONE="us-central1-a"
-ENV VERSION="1.2.5"
+ENV VERSION="1.2.6"
 
 RUN echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
