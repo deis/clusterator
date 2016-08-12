@@ -13,11 +13,14 @@ while read name; do
         --num-nodes $NUM_NODES \
         --no-async &> /dev/null
 
-      echo "Upgrading Cluster to version:${VERSION}"
-      gcloud container clusters upgrade ${name} \
-        --cluster-version ${VERSION} \
-        --async \
-        --quiet &> /dev/null
+      if [ -n "${VERSION}" ]; then
+        echo "Upgrading Cluster to version:${VERSION}"
+        gcloud container clusters upgrade ${name} \
+          --cluster-version ${VERSION} \
+          --async \
+          --quiet &> /dev/null
+      fi
+
       (( successes += 1 ))
     fi
   fi
