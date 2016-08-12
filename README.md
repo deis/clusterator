@@ -5,7 +5,7 @@ Docker image that can spin up or tear down clusters in GKE.
 The `create` script will iterate the list of names supplied by the [names](rootfs/names) file. It will first check to see if that name already exists in the project. If so we skip it and move on to the next name. Otherwise, we try and create a cluster with that name. Creation of the cluster is a blocking operation. After that takes place we will set the version of the cluster to the appropriate value (this operation is not blocking).
 
 ## Deleting clusters
-The `delete` script will iterate all names and if that name appears in the project it will attempt to remove it (this operation is not blocking). 
+The `delete` script will iterate all names and if that name appears in the project it will attempt to remove it (this operation is not blocking).
 
 ## Environment Variables
 * `CLOUD_SDK_REPO`: Version of the cloud sdk to install. (default:`"cloud-sdk-xenial"`)
@@ -15,4 +15,4 @@ The `delete` script will iterate all names and if that name appears in the proje
 * `NUM_NODES`: Number of nodes to create when spinning up a new cluster. (default:`"5"`)
 * `MACHINE_TYPE`: The machine size that should be used. (default:`"n1-standard-4"`)
 * `ZONE`: The zone where the clusters should be placed. (default:`"us-central1-a"`)
-* `VERSION`: The version of kubernetes to use. (default:`"1.2.5"`)
+* `VERSION`: The version of kubernetes to use. (default: the latest GKE version)
