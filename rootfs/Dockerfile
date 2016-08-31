@@ -6,7 +6,7 @@ ENV CLOUD_SDK_REPO="cloud-sdk-xenial" \
 	NUMBER_OF_CLUSTERS=1 \
 	NUM_NODES="5" \
 	MACHINE_TYPE="n1-standard-4" \
-	ZONE="us-central1-a" \
+	ZONE="us-central1-a"
 
 RUN echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list && \
 	curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
