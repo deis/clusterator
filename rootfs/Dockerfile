@@ -1,4 +1,4 @@
-FROM quay.io/deis/base:0.3.0
+FROM quay.io/deis/base:v0.3.5
 
 ENV CLOUD_SDK_REPO="cloud-sdk-xenial" \
 	GCLOUD_CREDENTIALS_FILE="clusterator.json" \
